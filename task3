@@ -1,0 +1,13 @@
+In binary thresholding, the rule is:
+
+* If the pixel value > threshold → set to **255**
+* If the pixel value ≤ threshold → set to **0**
+
+ Given:
+
+* Pixel value = **180**
+* Threshold = **150**
+
+ Since 180 > 150,
+
+The new pixel value after binary thresholding is **255**.
