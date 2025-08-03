@@ -1,0 +1,42 @@
+import cv2
+import matplotlib.pyplot as plt
+
+# Load the color image
+image = cv2.imread('photo.jpg')
+
+# Check if image loaded successfully
+if image is None:
+    print("Error: Image not found or unable to load.")
+    exit()
+
+# Convert to Grayscale
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Convert to HSV
+hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+# Convert to LAB
+lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+
+# Display the converted images
+cv2.imshow('Grayscale Image', gray_image)
+cv2.imshow('HSV Image', hsv_image)
+cv2.imshow('LAB Image', lab_image)
+
+# Wait for key press and close image windows
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# Save the converted images
+cv2.imwrite('photo_grayscale.jpg', gray_image)
+cv2.imwrite('photo_hsv.jpg', hsv_image)
+cv2.imwrite('photo_lab.jpg', lab_image)
+
+# Plot and display histogram of the grayscale image
+plt.figure(figsize=(8, 5))
+plt.hist(gray_image.ravel(), bins=256, range=[0, 256], color='gray')
+plt.title('Grayscale Image Histogram')
+plt.xlabel('Pixel Intensity')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
